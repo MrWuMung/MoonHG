@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>月隱伺服器｜遊戲內指令列表</title>
+  <title>月隱伺服器｜遊戲內介紹</title>
 
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- favicon（commands.html 與 index.html 同層） -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -15,150 +16,158 @@
 
 <body>
   <div class="page-overlay">
-<header class="site-header">
-  <div class="site-header__inner">
-    <h1 class="site-title">遊戲內介紹</h1>
-    <p class="site-subtitle">
-      遊戲內指令、玩法說明與注意事項（以伺服器實際設定為準）
-    </p>
-  </div>
-</header>
 
+    <!-- ===== Header ===== -->
+    <header class="site-header">
+      <div class="site-header__inner">
+        <h1 class="site-title">遊戲內介紹</h1>
+        <p class="site-subtitle">
+          遊戲內指令、玩法說明與注意事項（以伺服器實際設定為準）
+        </p>
+      </div>
+    </header>
 
-<section class="card">
-  <h2>相關規定（行為準則）</h2>
+    <!-- ===== Main ===== -->
+    <main class="content">
 
-  <p>
-    遊戲內如同一個小型社會的【公共場合】，需要所有玩家共同維護良好的遊戲環境。
-    為了讓每位玩家都能安心、愉快地遊玩，請務必遵守以下基本規定：
-  </p>
-
-  <ul>
-    <li>
-      💬 <strong>交流時請保持【禮貌】、【尊重】、【自重】</strong><br />
-      請避免人身攻擊、挑釁、嘲諷或任何讓他人感到不適的言行。
-    </li>
-
-    <li style="margin-top:10px;">
-      🚫 <strong>拒絕各種【紛爭】、【分裂手段】與【騷擾行為】</strong><br />
-      包含但不限於引戰、刻意挑撥、持續針對特定玩家的行為。
-    </li>
-
-    <li style="margin-top:10px;">
-      💬 <strong>聊天頻道請不要有【洗頻】或【重複性話語】</strong><br />
-      包含大量重複訊息、無意義刷屏，影響他人正常交流。
-    </li>
-
-    <li style="margin-top:10px;">
-      🎧 <strong>遊戲內有語音功能</strong><br />
-      請留意自身麥克風是否有【雜訊干擾】或因【靈敏度過高】導致不斷【漏麥】，避免影響其他玩家。
-    </li>
-	
-	<li style="margin-top:8px;">
-      請不要擅自【拿取】、【破壞】明顯屬於他人的建築或道具，
-      若有需求請事先【徵求】對方同意。
-    </li>
-  </ul>
-
-  <p class="muted-text" style="margin-top:16px;">
-    ※ 感謝每一位玩家的配合，一起維護良好的遊戲環境。
-  </p>
-</section>
-
-<section class="card">
-  <h2>遊戲內指令總覽</h2>
-
-  <p>
-    以下為玩家在遊戲中可使用的基本指令，
-    請於聊天欄按 <strong>T</strong> 輸入（依自行遊戲實際設定為準）。
-  </p>
-
-  <h3>使用說明</h3>
-  <ul>
-    <li>指令是否區分大小寫，會依模組或插件而不同，建議照範例輸入。</li>
-    <li>若指令無反應，可能是未開放、權限不足或版本不同。</li>
-  </ul>
-
-  <h3>基本操作</h3>
-  <ul>
-    <li><code>/help</code>－查看可用指令說明</li>
-    <li><code>/sethome</code>－設定目前位置為家</li>
-    <li><code>/home</code>－傳送回已設定的家</li>
-    <li><code>/homes</code>－查看已有的家</li>
-    <li><code>/delhome</code>－刪除已設定的家</li>
-  </ul>
-
-  <h3>傳送與移動</h3>
-  <ul>
-    <li><code>/tpa 玩家ID</code>－請求傳送到指定玩家</li>
-    <li><code>/tpaccept</code>－接受傳送請求</li>
-    <li><code>/tpdeny</code>－拒絕傳送請求</li>
-  </ul>
-
-  <h3>社交與聊天</h3>
-  <ul>
-    <li><code>/msg 玩家ID 訊息</code>－私訊玩家</li>
-    <li><code>/r 訊息</code>－回覆上一位私訊你的玩家</li>
-    <li><code>/ignore 玩家ID</code>－忽略指定玩家訊息</li>
-    <li><code>/list</code>－查看目前在線玩家</li>
-  </ul>
-
-  <h3>查詢與輔助</h3>
-  <ul>
-    <li><code>/ping</code>－查看自己的延遲</li>
-    <li><code>/discord</code>－綁定 Discord（用於帳號連動或身分驗證）</li>
-  </ul>
-
-  <p class="muted-text" style="margin-top:16px;">
-    ※ 指令可能會依伺服器設定或版本更新有所調整，請以實際遊戲內顯示為準。
-  </p>
-</section>
-
-
-      <!-- 已知問題（依你提供的內容新增） -->
+      <!-- 行為準則 -->
       <section class="card">
-        <h2>已知問題（Known Issues）</h2>
+        <h2>相關規定（行為準則）</h2>
+
+        <p>
+          遊戲內如同一個小型社會的【公共場合】，需要所有玩家共同維護良好的遊戲環境。
+          為了讓每位玩家都能安心、愉快地遊玩，請務必遵守以下基本規定：
+        </p>
+
         <ul>
           <li>
-            <strong>部分飾品含背包功能，放在飾品欄位的「背飾」位置可能導致遊戲崩潰</strong>
+            💬 <strong>交流時請保持【禮貌】、【尊重】、【自重】</strong><br />
+            避免人身攻擊、挑釁、嘲諷或任何讓他人感到不適的言行。
+          </li>
+
+          <li>
+            🚫 <strong>拒絕各種【紛爭】、【分裂手段】與【騷擾行為】</strong><br />
+            包含但不限於引戰、刻意挑撥、持續針對特定玩家。
+          </li>
+
+          <li>
+            💬 <strong>聊天頻道請勿【洗頻】或發送【重複性話語】</strong><br />
+            包含大量重複訊息或無意義刷屏，影響他人交流。
+          </li>
+
+          <li>
+            🎧 <strong>遊戲內含語音功能</strong><br />
+            請留意麥克風是否有雜訊或靈敏度過高導致漏麥，避免影響他人。
+          </li>
+
+          <li>
+            🏗️ <strong>請勿擅自拿取或破壞他人建築與道具</strong><br />
+            若有需求，請事先徵求對方同意。
+          </li>
+        </ul>
+
+        <p class="muted-text">
+          ※ 感謝每一位玩家的配合，一起維護良好的遊戲環境。
+        </p>
+      </section>
+
+      <!-- 指令總覽 -->
+      <section class="card">
+        <h2>遊戲內指令總覽</h2>
+
+        <p>
+          以下為玩家可使用的基本指令，請於聊天欄按 <strong>T</strong> 輸入。
+        </p>
+
+        <h3>使用說明</h3>
+        <ul>
+          <li>指令是否區分大小寫，視模組或插件而定。</li>
+          <li>若指令無反應，可能為未開放或權限不足。</li>
+        </ul>
+
+        <h3>基本操作</h3>
+        <ul>
+          <li><code>/help</code>－查看可用指令</li>
+          <li><code>/sethome</code>－設定目前位置為家</li>
+          <li><code>/home</code>－傳送回家</li>
+          <li><code>/homes</code>－查看已有的家</li>
+          <li><code>/delhome</code>－刪除家</li>
+        </ul>
+
+        <h3>傳送與移動</h3>
+        <ul>
+          <li><code>/tpa 玩家ID</code>－請求傳送</li>
+          <li><code>/tpaccept</code>－接受請求</li>
+          <li><code>/tpdeny</code>－拒絕請求</li>
+        </ul>
+
+        <h3>社交與聊天</h3>
+        <ul>
+          <li><code>/msg 玩家ID 訊息</code>－私訊玩家</li>
+          <li><code>/r 訊息</code>－回覆私訊</li>
+          <li><code>/ignore 玩家ID</code>－忽略玩家</li>
+          <li><code>/list</code>－查看在線玩家</li>
+        </ul>
+
+        <h3>查詢與輔助</h3>
+        <ul>
+          <li><code>/ping</code>－查看延遲</li>
+          <li><code>/discord</code>－綁定 Discord（帳號連動 / 驗證）</li>
+        </ul>
+
+        <p class="muted-text">
+          ※ 指令可能隨伺服器設定或版本更新調整。
+        </p>
+      </section>
+
+      <!-- 已知問題 -->
+      <section class="card">
+        <h2>已知問題（Known Issues）</h2>
+
+        <ul>
+          <li>
+            <strong>部分含背包功能的飾品，放入「背飾欄位」可能導致遊戲崩潰</strong>
             <ul>
-              <li>📌 現象：放入背飾欄位後，可能造成客戶端閃退或無法正常進入遊戲。</li>
-              <li>⚠️ 影響：在伺服器上可能需要人物重刷才能恢復。</li>
-              <li>✅ 解法：將「背飾欄位顯示」的開關關閉後，再放置該飾品即可正常使用。</li>
+              <li>📌 現象：可能造成客戶端閃退或無法進入遊戲。</li>
+              <li>⚠️ 影響：伺服器上可能需人物重刷。</li>
+              <li>✅ 解法：關閉「背飾欄位顯示」後再放置即可。</li>
             </ul>
           </li>
         </ul>
 
-        <p class="muted-text" style="margin-top:16px;">
-          若遇到其他異常狀況，請至官方 Discord 回報並附上截圖或錯誤訊息，協助我們排查。
+        <p class="muted-text">
+          若遇到其他異常，請至官方 Discord 回報並附上相關資訊。
         </p>
       </section>
 
+      <!-- 返回 -->
       <section class="card">
-        <h2>返回</h2>
-        <p><a class="cta-link" href="index.html">← 回到官網首頁</a></p>
-	</section>
+        <a class="cta-link" href="index.html">← 回到官網首頁</a>
+      </section>
+
     </main>
 
+    <!-- ===== Footer ===== -->
     <footer class="site-footer">
       © 2025 月隱伺服器 MoonShadow Server
     </footer>
   </div>
+
+  <!-- 浮動 Discord -->
   <a
-  class="fab-discord"
-  href="https://discord.gg/s6r99fW"
-  target="_blank"
-  rel="noopener"
-  aria-label="加入官方 Discord"
-  title="加入官方 Discord"
->
-  <svg class="fab-discord__icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path
-      fill="currentColor"
-      d="M19.54 0.7A19.9 19.9 0 0 0 14.8 0a14.6 14.6 0 0 0-.64 1.33a18.3 18.3 0 0 0-4.32 0A14.6 14.6 0 0 0 9.2 0a19.9 19.9 0 0 0-4.74.7C1.46 5.1.67 9.4 1.02 13.63A19.9 19.9 0 0 0 6.1 16.1a15.3 15.3 0 0 0 1.07-1.75a12.7 12.7 0 0 1-1.69-.8c.14-.1.28-.2.41-.31a13.8 13.8 0 0 0 12.2 0c.13.11.27.21.41.31c-.54.32-1.1.6-1.69.8c.32.6.68 1.19 1.07 1.75a19.9 19.9 0 0 0 5.08-2.47c.4-4.9-.66-9.16-3.43-12.93ZM8.02 11.9c-1 0-1.82-.92-1.82-2.05c0-1.13.8-2.05 1.82-2.05c1.01 0 1.83.93 1.82 2.05c0 1.13-.8 2.05-1.82 2.05Zm7.96 0c-1 0-1.82-.92-1.82-2.05c0-1.13.8-2.05 1.82-2.05c1.01 0 1.83.93 1.82 2.05c0 1.13-.8 2.05-1.82 2.05Z"
-    />
-  </svg>
-  <span class="fab-discord__text">加入 Discord</span>
-</a>
+    class="fab-discord"
+    href="https://discord.gg/s6r99fW"
+    target="_blank"
+    rel="noopener"
+    aria-label="加入官方 Discord"
+    title="加入官方 Discord"
+  >
+    <svg class="fab-discord__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor"
+        d="M19.54 0.7A19.9 19.9 0 0 0 14.8 0a14.6 14.6 0 0 0-.64 1.33a18.3 18.3 0 0 0-4.32 0A14.6 14.6 0 0 0 9.2 0a19.9 19.9 0 0 0-4.74.7C1.46 5.1.67 9.4 1.02 13.63A19.9 19.9 0 0 0 6.1 16.1a15.3 15.3 0 0 0 1.07-1.75a12.7 12.7 0 0 1-1.69-.8c.14-.1.28-.2.41-.31a13.8 13.8 0 0 0 12.2 0c.13.11.27.21.41.31c-.54.32-1.1.6-1.69.8c.32.6.68 1.19 1.07 1.75a19.9 19.9 0 0 0 5.08-2.47c.4-4.9-.66-9.16-3.43-12.93Z"/>
+    </svg>
+    <span class="fab-discord__text">加入 Discord</span>
+  </a>
+
 </body>
 </html>
