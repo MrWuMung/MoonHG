@@ -452,3 +452,25 @@ code {
   font-size: 0.95em;
 }
 
+/* ===== Server status indicator ===== */
+.server-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 8px;
+  border-radius: 50%;
+  vertical-align: middle;
+  background: #64748b; /* 預設灰：偵測中 */
+}
+
+.server-status.is-online { background: #22c55e; }  /* 綠 */
+.server-status.is-warn   { background: #facc15; }  /* 黃 */
+.server-status.is-offline{ background: #ef4444; }  /* 紅 */
+
+.status-text {
+  margin-left: 8px;
+  color: var(--muted-2);
+  font-size: 14px;
+  vertical-align: middle;
+}
+
