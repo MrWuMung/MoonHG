@@ -160,8 +160,19 @@
       <section class="card">
         <h2>連線資訊</h2>
         <div class="info-box">
-          <p>主要伺服器 IP：<span class="highlight">txd.cfh.tw:13418</span></p>
-          <p>備用伺服器 IP：<span class="highlight">udp.cfh.tw:13418</span></p>
+<p>
+  主要伺服器 IP：<span class="highlight">txd.cfh.tw:13418</span>
+  <span class="server-status" id="status-main" title="偵測中"></span>
+  <span class="status-text" id="status-text-main">偵測中…</span>
+</p>
+
+<p>
+  備用伺服器 IP：<span class="highlight">udp.cfh.tw:13418</span>
+  <span class="server-status" id="status-backup" title="偵測中"></span>
+  <span class="status-text" id="status-text-backup">偵測中…</span>
+</p>
+
+
           <p>遊戲版本：<span class="highlight">Minecraft 1.20.1</span></p>
           <p>模組載入器：<span class="highlight">Forge 47.4.10</span></p>
         </div>
@@ -255,3 +266,105 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   })();
 </script>
+
+<script>
+  (function () {
+    const servers = [
+      {
+        name: "主要",
+        host: "txd.cfh.tw",
+        port: 13418,
+        dotId: "status-main",
+        textId: "status-text-main",
+      },
+      {
+        name: "備用",
+        host: "udp.cfh.tw",
+        port: 13418,
+        dotId: "status-backup",
+        textId: "status-text-backup",
+      },
+    ];
+
+    const INTERVAL_MS = 30000; // 30 秒更新一次
+    const TIMEOUT_MS = 6500;   // 6.5 秒逾時
+
+    function setStatus(dotEl, textEl, stateClass, text) {
+      dotEl.classList.remove("is-online", "is-warn", "is-offline");
+      if (stateClass) dotEl.classList.add(stateClass);
+      dotEl.title = text;
+      textEl.textContent = text;
+    }
+
+    async function fetchWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const t = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        return await fetch(url, { signal: controller.signal, cache: "no-store" });
+      } finally {
+        clearTimeout(t);
+      }
+    }
+
+    function qualityFromMs(ms) {
+      // 門檻你可依實測調整
+      if (ms <= 200) return { cls: "is-online", label: "良好" };
+      if (ms <= 600) return { cls: "is-warn",   label: "普通" };
+      return           { cls: "is-warn",   label: "偏慢" };
+    }
+
+    async function checkOne(s) {
+      const dotEl = document.getElementById(s.dotId);
+      const textEl = document.getElementById(s.textId);
+      if (!dotEl || !textEl) return;
+
+      setStatus(dotEl, textEl, "", "偵測中…");
+
+      // mcapi.us：/server/status?ip=<host>&port=<port>
+      const url =
+        "https://mcapi.us/server/status?ip=" +
+        encodeURIComponent(s.host) +
+        "&port=" +
+        encodeURIComponent(s.port);
+
+      try {
+        const res = await fetchWithTimeout(url, TIMEOUT_MS);
+        if (!res.ok) {
+          setStatus(dotEl, textEl, "is-warn", "偵測失敗（API 回應異常）");
+          return;
+        }
+
+        const data = await res.json();
+
+        if (!data || data.status !== "success") {
+          setStatus(dotEl, textEl, "is-warn", "偵測失敗（資料格式異常）");
+          return;
+        }
+
+        if (!data.online) {
+          setStatus(dotEl, textEl, "is-offline", "離線／無法連線");
+          return;
+        }
+
+        const ms = Math.round((Number(data.duration) || 0) / 1e6); // ns → ms
+        const q = qualityFromMs(ms);
+
+        setStatus(dotEl, textEl, q.cls, `在線｜${q.label}（${ms} ms）`);
+      } catch (e) {
+        setStatus(dotEl, textEl, "is-warn", "偵測失敗（逾時或網路問題）");
+      }
+    }
+
+    async function run() {
+      // 並行檢查兩台（較快）
+      await Promise.all(servers.map(checkOne));
+    }
+
+    run();
+    setInterval(run, INTERVAL_MS);
+  })();
+</script>
+
+
+</body>
+</html>

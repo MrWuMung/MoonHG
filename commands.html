@@ -15,70 +15,105 @@
 
 <body>
   <div class="page-overlay">
-	<header class="site-header">
-	  <div class="site-header__inner">
-	    <h1 class="site-title">遊戲內介紹</h1>
-	    <p class="site-subtitle">
-	      遊戲內指令、玩法說明與注意事項（以伺服器實際設定為準）
-	    </p>
-	  </div>
-	</header>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">遊戲內介紹</h1>
+    <p class="site-subtitle">
+      遊戲內指令、玩法說明與注意事項（以伺服器實際設定為準）
+    </p>
+  </div>
+</header>
 
 
-    <main class="content">
-      <section class="card">
-        <h2>使用說明</h2>
-        <ul>
-          <li>指令是否區分大小寫，會依模組/插件而不同，建議照範例輸入。</li>
-          <li>若指令無反應，可能是未開放、權限不足或版本不同，請以遊戲內提示為準。</li>
-        </ul>
-      </section>
+<section class="card">
+  <h2>相關規定（行為準則）</h2>
 
-      <section class="card">
-        <h2>基本操作</h2>
-        <ul>
-          <li><code>/help</code>－查看可用指令說明</li>
-          <!-- 如果你伺服器有 spawn，建議保留；沒有就刪掉這行 -->
-          <li><code>/spawn</code>－回到主城／出生點</li>
+  <p>
+    遊戲內如同一個小型社會的【公共場合】，需要所有玩家共同維護良好的遊戲環境。
+    為了讓每位玩家都能安心、愉快地遊玩，請務必遵守以下基本規定：
+  </p>
 
-          <li><code>/sethome</code>－設定目前位置為家</li>
-          <li><code>/home</code>－傳送回已設定的家</li>
-          <li><code>/homes</code>－查看已有的家</li>
-          <li><code>/delhome</code>－刪除已設定的家</li>
-        </ul>
-      </section>
+  <ul>
+    <li>
+      💬 <strong>交流時請保持【禮貌】、【尊重】、【自重】</strong><br />
+      請避免人身攻擊、挑釁、嘲諷或任何讓他人感到不適的言行。
+    </li>
 
-      <section class="card">
-        <h2>傳送與移動</h2>
-        <ul>
-          <li><code>/tpa 玩家ID</code>－請求傳送到指定玩家</li>
-          <li><code>/tpaccept</code>－接受傳送請求</li>
-          <li><code>/tpdeny</code>－拒絕傳送請求</li>
-        </ul>
-      </section>
+    <li style="margin-top:10px;">
+      🚫 <strong>拒絕各種【紛爭】、【分裂手段】與【騷擾行為】</strong><br />
+      包含但不限於引戰、刻意挑撥、持續針對特定玩家的行為。
+    </li>
 
-      <section class="card">
-        <h2>社交與聊天</h2>
-        <ul>
-          <li><code>/msg 玩家ID 訊息</code>－私訊玩家</li>
-          <li><code>/r 訊息</code>－回覆上一位私訊你的玩家</li>
-          <li><code>/ignore 玩家ID</code>－忽略指定玩家訊息</li>
-          <li><code>/list</code>－查看目前在線玩家</li>
-        </ul>
-      </section>
+    <li style="margin-top:10px;">
+      💬 <strong>聊天頻道請不要有【洗頻】或【重複性話語】</strong><br />
+      包含大量重複訊息、無意義刷屏，影響他人正常交流。
+    </li>
 
-      <section class="card">
-        <h2>查詢與輔助</h2>
-        <ul>
-          <li><code>/ping</code>－查看自己的延遲</li>
-          <li><code>/rules</code>－查看伺服器規則</li>
-          <li><code>/discord</code>－取得官方 Discord 連結</li>
-        </ul>
+    <li style="margin-top:10px;">
+      🎧 <strong>遊戲內有語音功能</strong><br />
+      請留意自身麥克風是否有【雜訊干擾】或因【靈敏度過高】導致不斷【漏麥】，避免影響其他玩家。
+    </li>
+	
+	<li style="margin-top:8px;">
+      請不要擅自【拿取】、【破壞】明顯屬於他人的建築或道具，
+      若有需求請事先【徵求】對方同意。
+    </li>
+  </ul>
 
-        <p class="muted-text" style="margin-top:16px;">
-          ※ 指令可能會依伺服器設定或版本更新有所調整，請以實際遊戲內顯示為準。
-        </p>
-      </section>
+  <p class="muted-text" style="margin-top:16px;">
+    ※ 感謝每一位玩家的配合，一起維護良好的遊戲環境。
+  </p>
+</section>
+
+<section class="card">
+  <h2>遊戲內指令總覽</h2>
+
+  <p>
+    以下為玩家在遊戲中可使用的基本指令，
+    請於聊天欄按 <strong>T</strong> 輸入（依自行遊戲實際設定為準）。
+  </p>
+
+  <h3>使用說明</h3>
+  <ul>
+    <li>指令是否區分大小寫，會依模組或插件而不同，建議照範例輸入。</li>
+    <li>若指令無反應，可能是未開放、權限不足或版本不同。</li>
+  </ul>
+
+  <h3>基本操作</h3>
+  <ul>
+    <li><code>/help</code>－查看可用指令說明</li>
+    <li><code>/sethome</code>－設定目前位置為家</li>
+    <li><code>/home</code>－傳送回已設定的家</li>
+    <li><code>/homes</code>－查看已有的家</li>
+    <li><code>/delhome</code>－刪除已設定的家</li>
+  </ul>
+
+  <h3>傳送與移動</h3>
+  <ul>
+    <li><code>/tpa 玩家ID</code>－請求傳送到指定玩家</li>
+    <li><code>/tpaccept</code>－接受傳送請求</li>
+    <li><code>/tpdeny</code>－拒絕傳送請求</li>
+  </ul>
+
+  <h3>社交與聊天</h3>
+  <ul>
+    <li><code>/msg 玩家ID 訊息</code>－私訊玩家</li>
+    <li><code>/r 訊息</code>－回覆上一位私訊你的玩家</li>
+    <li><code>/ignore 玩家ID</code>－忽略指定玩家訊息</li>
+    <li><code>/list</code>－查看目前在線玩家</li>
+  </ul>
+
+  <h3>查詢與輔助</h3>
+  <ul>
+    <li><code>/ping</code>－查看自己的延遲</li>
+    <li><code>/discord</code>－綁定 Discord（用於帳號連動或身分驗證）</li>
+  </ul>
+
+  <p class="muted-text" style="margin-top:16px;">
+    ※ 指令可能會依伺服器設定或版本更新有所調整，請以實際遊戲內顯示為準。
+  </p>
+</section>
+
 
       <!-- 已知問題（依你提供的內容新增） -->
       <section class="card">
@@ -127,4 +162,3 @@
 </a>
 </body>
 </html>
-
