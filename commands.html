@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>月隱伺服器｜遊戲內指令列表</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- 你的 favicon（若 commands.html 與 index.html 同層） -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>
+  <div class="page-overlay">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <h1 class="site-title">遊戲內基本指令</h1>
+        <p class="site-subtitle">聊天欄按 <strong>T</strong> 輸入指令（以伺服器實際設定為準）</p>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card">
+        <h2>使用說明</h2>
+        <ul>
+          <li>指令區分大小寫與否視模組/插件而定，建議照範例輸入。</li>
+          <li>若指令無反應，可能是未開放或版本不同，請以遊戲內提示為準。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>基本操作</h2>
+        <ul>
+          <li><code>/help</code>－查看可用指令說明</li>
+          <li><code>/sethome</code>－設定目前位置為家</li>
+          <li><code>/home</code>－傳送回已設定的家</li>
+		  <li><code>/homes</code>－查看已有的家</li>
+          <li><code>/delhome</code>－刪除已設定的家</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>傳送與移動</h2>
+        <ul>
+          <li><code>/tpa 玩家ID</code>－請求傳送到指定玩家</li>
+          <li><code>/tpaccept</code>－接受傳送請求</li>
+          <li><code>/tpdeny</code>－拒絕傳送請求</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>社交與聊天</h2>
+        <ul>
+          <li><code>/msg 玩家ID 訊息</code>－私訊玩家</li>
+          <li><code>/r 訊息</code>－回覆上一位私訊你的玩家</li>
+          <li><code>/ignore 玩家ID</code>－忽略指定玩家訊息</li>
+          <li><code>/list</code>－查看目前在線玩家</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>查詢與輔助</h2>
+        <ul>
+          <li><code>/ping</code>－查看自己的延遲</li>
+          <li><code>/rules</code>－查看伺服器規則</li>
+          <li><code>/discord</code>－取得官方 Discord 連結</li>
+        </ul>
+
+        <p class="muted-text" style="margin-top:16px;">
