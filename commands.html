@@ -7,10 +7,10 @@
 
   <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- 你的 favicon（若 commands.html 與 index.html 同層） -->
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- favicon（commands.html 與 index.html 同層） -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 </head>
 
 <body>
@@ -26,8 +26,8 @@
       <section class="card">
         <h2>使用說明</h2>
         <ul>
-          <li>指令區分大小寫與否視模組/插件而定，建議照範例輸入。</li>
-          <li>若指令無反應，可能是未開放或版本不同，請以遊戲內提示為準。</li>
+          <li>指令是否區分大小寫，會依模組/插件而不同，建議照範例輸入。</li>
+          <li>若指令無反應，可能是未開放、權限不足或版本不同，請以遊戲內提示為準。</li>
         </ul>
       </section>
 
@@ -35,9 +35,12 @@
         <h2>基本操作</h2>
         <ul>
           <li><code>/help</code>－查看可用指令說明</li>
+          <!-- 如果你伺服器有 spawn，建議保留；沒有就刪掉這行 -->
+          <li><code>/spawn</code>－回到主城／出生點</li>
+
           <li><code>/sethome</code>－設定目前位置為家</li>
           <li><code>/home</code>－傳送回已設定的家</li>
-		  <li><code>/homes</code>－查看已有的家</li>
+          <li><code>/homes</code>－查看已有的家</li>
           <li><code>/delhome</code>－刪除已設定的家</li>
         </ul>
       </section>
@@ -70,3 +73,54 @@
         </ul>
 
         <p class="muted-text" style="margin-top:16px;">
+          ※ 指令可能會依伺服器設定或版本更新有所調整，請以實際遊戲內顯示為準。
+        </p>
+      </section>
+
+      <!-- 已知問題（依你提供的內容新增） -->
+      <section class="card">
+        <h2>已知問題（Known Issues）</h2>
+        <ul>
+          <li>
+            <strong>部分飾品含背包功能，放在飾品欄位的「背飾」位置可能導致遊戲崩潰</strong>
+            <ul>
+              <li>📌 現象：放入背飾欄位後，可能造成客戶端閃退或無法正常進入遊戲。</li>
+              <li>⚠️ 影響：在伺服器上可能需要人物重刷才能恢復。</li>
+              <li>✅ 解法：將「背飾欄位顯示」的開關關閉後，再放置該飾品即可正常使用。</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="muted-text" style="margin-top:16px;">
+          若遇到其他異常狀況，請至官方 Discord 回報並附上截圖或錯誤訊息，協助我們排查。
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>返回</h2>
+        <p><a class="cta-link" href="index.html">← 回到官網首頁</a></p>
+	</section>
+    </main>
+
+    <footer class="site-footer">
+      © 2025 月隱伺服器 MoonShadow Server
+    </footer>
+  </div>
+  <a
+  class="fab-discord"
+  href="https://discord.gg/s6r99fW"
+  target="_blank"
+  rel="noopener"
+  aria-label="加入官方 Discord"
+  title="加入官方 Discord"
+>
+  <svg class="fab-discord__icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M19.54 0.7A19.9 19.9 0 0 0 14.8 0a14.6 14.6 0 0 0-.64 1.33a18.3 18.3 0 0 0-4.32 0A14.6 14.6 0 0 0 9.2 0a19.9 19.9 0 0 0-4.74.7C1.46 5.1.67 9.4 1.02 13.63A19.9 19.9 0 0 0 6.1 16.1a15.3 15.3 0 0 0 1.07-1.75a12.7 12.7 0 0 1-1.69-.8c.14-.1.28-.2.41-.31a13.8 13.8 0 0 0 12.2 0c.13.11.27.21.41.31c-.54.32-1.1.6-1.69.8c.32.6.68 1.19 1.07 1.75a19.9 19.9 0 0 0 5.08-2.47c.4-4.9-.66-9.16-3.43-12.93ZM8.02 11.9c-1 0-1.82-.92-1.82-2.05c0-1.13.8-2.05 1.82-2.05c1.01 0 1.83.93 1.82 2.05c0 1.13-.8 2.05-1.82 2.05Zm7.96 0c-1 0-1.82-.92-1.82-2.05c0-1.13.8-2.05 1.82-2.05c1.01 0 1.83.93 1.82 2.05c0 1.13-.8 2.05-1.82 2.05Z"
+    />
+  </svg>
+  <span class="fab-discord__text">加入 Discord</span>
+</a>
+</body>
+</html>
