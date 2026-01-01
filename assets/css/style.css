@@ -474,3 +474,411 @@ code {
   vertical-align: middle;
 }
 
+/* ===== Background Music Button ===== */
+.bgm-toggle {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1200;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: none;
+
+  background: rgba(2, 6, 23, 0.8);
+  color: #e5e7eb;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+}
+
+.bgm-toggle:hover {
+  filter: brightness(1.1);
+}
+
+/* =========================================================
+   Background Music Control (NO OVERLAP – FINAL)
+========================================================= */
+
+.bgm-control {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1200;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 10px;
+  background: rgba(2, 6, 23, 0.55);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+/* 播放 / 暫停按鈕 */
+.bgm-toggle {
+  position: static;            /* 🔑 關鍵：避免疊加 */
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: rgba(2, 6, 23, 0.85);
+  color: #e5e7eb;
+  font-weight: 700;
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+/* 音量滑桿 */
+.bgm-volume {
+  position: static;            /* 🔑 關鍵 */
+  width: 90px;
+  height: 4px;
+
+  cursor: pointer;
+  accent-color: #22d3ee;
+}
+
+/* 手機：只留按鈕，不重疊 */
+@media (max-width: 640px) {
+  .bgm-control {
+    padding: 6px;
+  }
+
+  .bgm-volume {
+    display: none;
+  }
+}
+
+/* =========================================================
+   Minecraft Style BGM UI (FINAL)
+========================================================= */
+
+.mc-bgm {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1200;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 10px;
+  background: #1f2937; /* Minecraft UI dark */
+  border: 3px solid #111827;
+  box-shadow:
+    inset 0 0 0 2px #374151,
+    0 8px 18px rgba(0,0,0,0.6);
+
+  image-rendering: pixelated;
+}
+
+/* 播放按鈕 */
+.mc-bgm-btn {
+  font-family: "Minecraft", "Microsoft JhengHei", sans-serif;
+  font-size: 14px;
+
+  padding: 6px 12px;
+  background: #374151;
+  color: #e5e7eb;
+
+  border: 2px solid #111827;
+  box-shadow: inset 0 0 0 2px #4b5563;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.mc-bgm-btn:hover {
+  background: #4b5563;
+}
+
+.mc-bgm-btn:active {
+  transform: translateY(1px);
+}
+
+/* 音量區塊 */
+.mc-bgm-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mc-bgm-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Minecraft 經驗條風格音量 */
+.mc-bgm-volume {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 90px;
+  height: 10px;
+  background: #052e16;
+  border: 2px solid #064e3b;
+  box-shadow: inset 0 0 0 2px #022c22;
+
+  cursor: pointer;
+}
+
+.mc-bgm-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 14px;
+  background: #22c55e;
+  border: 2px solid #14532d;
+  box-shadow: inset 0 0 0 2px #16a34a;
+}
+
+.mc-bgm-volume::-moz-range-thumb {
+  width: 10px;
+  height: 14px;
+  background: #22c55e;
+  border: 2px solid #14532d;
+}
+
+/* 手機：只留按鈕 */
+@media (max-width: 640px) {
+  .mc-bgm-volume-wrap {
+    display: none;
+  }
+}
+
+/* =========================================================
+   Minecraft Disc – Now Playing UI
+========================================================= */
+
+.mc-bgm {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1200;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px;
+  background: #1f2937;
+  border: 3px solid #111827;
+  box-shadow:
+    inset 0 0 0 2px #374151,
+    0 8px 18px rgba(0,0,0,0.6);
+
+  image-rendering: pixelated;
+}
+
+/* ================= 唱片 ================= */
+
+.mc-disc {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at center,
+      #000 0%,
+      #000 25%,
+      #111 26%,
+      #111 45%,
+      #000 46%,
+      #000 100%);
+
+  border: 3px solid #020617;
+  position: relative;
+
+  animation: mc-spin 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.mc-disc-center {
+  position: absolute;
+  inset: 18px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid #14532d;
+}
+
+/* 播放中旋轉 */
+.mc-disc.is-playing {
+  animation-play-state: running;
+}
+
+@keyframes mc-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= 控制 ================= */
+
+.mc-bgm-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mc-bgm-btn {
+  font-family: "Microsoft JhengHei", sans-serif;
+  font-size: 14px;
+
+  padding: 6px 12px;
+  background: #374151;
+  color: #e5e7eb;
+
+  border: 2px solid #111827;
+  box-shadow: inset 0 0 0 2px #4b5563;
+  cursor: pointer;
+}
+
+.mc-bgm-btn:hover {
+  background: #4b5563;
+}
+
+/* ================= 音量 ================= */
+
+.mc-bgm-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mc-bgm-volume {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 90px;
+  height: 10px;
+  background: #052e16;
+  border: 2px solid #064e3b;
+  box-shadow: inset 0 0 0 2px #022c22;
+}
+
+.mc-bgm-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 14px;
+  background: #22c55e;
+  border: 2px solid #14532d;
+}
+
+/* ================= 曲名 ================= */
+
+.mc-bgm-track {
+  font-size: 12px;
+  color: #a7f3d0;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 手機：隱藏唱片與曲名 */
+@media (max-width: 640px) {
+  .mc-disc,
+  .mc-bgm-track {
+    display: none;
+  }
+}
+
+/* =========================================================
+   Minecraft Style BGM UI (NO TITLE – FINAL)
+========================================================= */
+
+.mc-bgm {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1200;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 10px;
+  background: #1f2937;
+  border: 3px solid #111827;
+  box-shadow:
+    inset 0 0 0 2px #374151,
+    0 8px 18px rgba(0,0,0,0.6);
+
+  image-rendering: pixelated;
+}
+
+/* 播放 / 暫停按鈕 */
+.mc-bgm-btn {
+  font-family: "Minecraft", "Microsoft JhengHei", sans-serif;
+  font-size: 14px;
+
+  padding: 6px 12px;
+  background: #374151;
+  color: #e5e7eb;
+
+  border: 2px solid #111827;
+  box-shadow: inset 0 0 0 2px #4b5563;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.mc-bgm-btn:hover {
+  background: #4b5563;
+}
+
+.mc-bgm-btn:active {
+  transform: translateY(1px);
+}
+
+/* 音量區塊 */
+.mc-bgm-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mc-bgm-icon {
+  font-size: 14px;
+}
+
+/* Minecraft 經驗條風格音量 */
+.mc-bgm-volume {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 90px;
+  height: 10px;
+  background: #052e16;
+  border: 2px solid #064e3b;
+  box-shadow: inset 0 0 0 2px #022c22;
+
+  cursor: pointer;
+}
+
+.mc-bgm-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 14px;
+  background: #22c55e;
+  border: 2px solid #14532d;
+  box-shadow: inset 0 0 0 2px #16a34a;
+}
+
+.mc-bgm-volume::-moz-range-thumb {
+  width: 10px;
+  height: 14px;
+  background: #22c55e;
+  border: 2px solid #14532d;
+}
+
+/* 手機：只留按鈕 */
+@media (max-width: 640px) {
+  .mc-bgm-volume-wrap {
+    display: none;
+  }
+}
+
+
