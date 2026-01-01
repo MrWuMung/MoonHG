@@ -231,5 +231,112 @@
       window.addEventListener("scroll", onScroll, { passive: true });
     })();
   </script>
+  
+  <div class="mc-bgm">
+  <button id="bgm-toggle" class="mc-bgm-btn">▶ BGM</button>
+
+  <div class="mc-bgm-volume-wrap">
+    <span class="mc-bgm-icon">🔊</span>
+    <input
+      id="bgm-volume"
+      class="mc-bgm-volume"
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+    />
+  </div>
+</div>
+
+
+<script>
+(function () {
+  const tracks = [
+    "assets/bgm/bgm1.mp3",
+    "assets/bgm/bgm2.mp3",
+    "assets/bgm/bgm3.mp3",
+    "assets/bgm/bgm4.mp3",
+    "assets/bgm/bgm5.mp3",
+    "assets/bgm/bgm6.mp3"
+  ];
+
+  const audio = new Audio();
+  audio.preload = "auto";
+  audio.volume = 0.5;
+  audio.loop = false;
+
+  const toggleBtn = document.getElementById("bgm-toggle");
+  const volumeSlider = document.getElementById("bgm-volume");
+  if (!toggleBtn || !volumeSlider) return;
+
+  let unlocked = false;
+  let currentIndex = -1;
+
+  function pickRandomIndex() {
+    let next;
+    do {
+      next = Math.floor(Math.random() * tracks.length);
+    } while (next === currentIndex && tracks.length > 1);
+    return next;
+  }
+
+  async function playIndex(i, { userGesture = false } = {}) {
+    currentIndex = i;
+    audio.src = tracks[currentIndex];
+
+    try {
+      if (!unlocked && userGesture) {
+        // 🔑 第一次必須走「靜音解鎖」流程
+        audio.muted = true;
+        await audio.play();
+        audio.muted = false;
+        unlocked = true;
+        toggleBtn.textContent = "🔊 音樂 ON";
+        return;
+      }
+
+      // 已解鎖後播放（可能仍被策略影響，因此保險：短暫靜音再解）
+      audio.muted = true;
+      await audio.play();
+      audio.muted = false;
+      toggleBtn.textContent = "🔊 音樂 ON";
+    } catch (e) {
+      // 若自動下一首被擋，提示使用者再點一次
+      toggleBtn.textContent = "▶ 點我續播";
+      console.warn("BGM play blocked:", e);
+    }
+  }
+
+  // 第一次解鎖：必須在使用者事件內
+  toggleBtn.addEventListener("pointerdown", async () => {
+    if (unlocked) return;
+    await playIndex(pickRandomIndex(), { userGesture: true });
+  });
+
+  // 點擊按鈕：播放/暫停（播放時每次隨機一首）
+  toggleBtn.addEventListener("click", async () => {
+    if (!unlocked) return;
+
+    if (audio.paused) {
+      await playIndex(pickRandomIndex());
+    } else {
+      audio.pause();
+      toggleBtn.textContent = "🔇 音樂 OFF";
+    }
+  });
+
+  // ✅ 自動下一首：結束時隨機播下一首
+  audio.addEventListener("ended", async () => {
+    if (!unlocked) return;
+    await playIndex(pickRandomIndex());
+  });
+
+  // 音量
+  volumeSlider.addEventListener("input", () => {
+    audio.volume = volumeSlider.value / 100;
+  });
+})();
+</script>
+  
 </body>
 </html>
