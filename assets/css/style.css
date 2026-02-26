@@ -1,4 +1,4 @@
-/* assets/css/style.css */
+/* assets/css/style.css (deduped & cleaned) */
 
 /* =========================
    Base / Tokens
@@ -86,6 +86,14 @@ a:hover {
   font-weight: 700;
 }
 
+code {
+  background: rgba(148, 163, 184, 0.15);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: Consolas, monospace;
+  font-size: 0.95em;
+}
+
 /* =========================
    Header (Sticky + Shrink + TPom background)
 ========================= */
@@ -94,8 +102,6 @@ header {
   top: 0;
   z-index: 1000;
 
-  /* Required for ::before overlay positioning */
-  position: sticky;
   text-align: center;
 
   /* TPom: 至頂文字背景 */
@@ -212,10 +218,46 @@ h3 {
   margin-top: 6px;
 }
 
-/* Optional helper class (from your HTML inline style) */
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.cta-link.primary {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  color: #fbbf24;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.cta-link.secondary {
+  background: rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #cbd5f5;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.cta-link.primary:hover,
+.cta-link.secondary:hover {
+  text-decoration: none;
+  filter: brightness(1.1);
+}
+
+/* Optional helper class */
 .muted-text {
   margin-top: 12px;
   color: var(--muted);
+}
+
+/* CTA mobile */
+@media (max-width: 640px) {
+  .cta-group {
+    flex-direction: column;
+  }
 }
 
 /* =========================
@@ -298,7 +340,7 @@ footer {
 
   padding: 12px 14px;
   border-radius: 999px;
-  background: #5865f2; /* Discord blurple */
+  background: #5865f2;
   color: #ffffff;
   font-weight: 700;
   letter-spacing: 0.2px;
@@ -326,7 +368,7 @@ footer {
   display: inline-block;
 }
 
-/* 手機/小螢幕：縮成只有圖示，避免擋畫面 */
+/* 手機/小螢幕：縮成只有圖示 */
 @media (max-width: 640px) {
   .fab-discord {
     padding: 12px;
@@ -345,7 +387,6 @@ footer {
   display: block;
 }
 
-/* 平板以下隱藏聊天（你可依需求調整門檻） */
 @media (max-width: 900px) {
   .desktop-only {
     display: none;
@@ -353,106 +394,59 @@ footer {
 }
 
 /* =========================
-   Mod list + Right images column
+   Mod list + Right images column (FINAL)
 ========================= */
 .mod-layout {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 28px;
-  align-items: start;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.mod-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .mod-images {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-
-  /* 讓右欄滑到一半時也能停在視窗內（可選） */
+  width: 320px;
   position: sticky;
-  top: 110px; /* 依你 header 高度可調整 */
+  top: 100px;
 }
 
 .mod-images img {
   width: 100%;
   display: block;
   border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
 }
 
-/* 平板以下：右欄移到下方，避免擠壓文字 */
-@media (max-width: 992px) {
+.mod-images img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1000px) {
   .mod-layout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .mod-images {
+    width: 100%;
     position: static;
-    top: auto;
-    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .mod-images img {
+    margin: 0;
   }
 }
 
-code {
-  background: rgba(148, 163, 184, 0.15);
-  padding: 2px 6px;
-  border-radius: 6px;
-  font-family: Consolas, monospace;
-  font-size: 0.95em;
-}
-
-/* ===== CTA group (New Player section) ===== */
-.cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.cta-link.primary {
-  background: rgba(251, 191, 36, 0.15);
-  border: 1px solid rgba(251, 191, 36, 0.5);
-  color: #fbbf24;
-  padding: 8px 14px;
-  border-radius: 8px;
-}
-
-.cta-link.secondary {
-  background: rgba(148, 163, 184, 0.12);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  color: #cbd5f5;
-  padding: 8px 14px;
-  border-radius: 8px;
-}
-
-.cta-link.primary:hover,
-.cta-link.secondary:hover {
-  text-decoration: none;
-  filter: brightness(1.1);
-}
-
-/* 手機友善 */
-@media (max-width: 640px) {
-  .cta-group {
-    flex-direction: column;
-  }
-}
-
-.cta-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-code {
-  background: rgba(148, 163, 184, 0.15);
-  padding: 2px 6px;
-  border-radius: 6px;
-  font-family: Consolas, monospace;
-  font-size: 0.95em;
-}
-
-/* ===== Server status indicator ===== */
+/* =========================
+   Server status indicator
+========================= */
 .server-status {
   display: inline-block;
   width: 10px;
@@ -463,9 +457,15 @@ code {
   background: #64748b; /* 預設灰：偵測中 */
 }
 
-.server-status.is-online { background: #22c55e; }  /* 綠 */
-.server-status.is-warn   { background: #facc15; }  /* 黃 */
-.server-status.is-offline{ background: #ef4444; }  /* 紅 */
+.server-status.is-online {
+  background: #22c55e;
+}
+.server-status.is-warn {
+  background: #facc15;
+}
+.server-status.is-offline {
+  background: #ef4444;
+}
 
 .status-text {
   margin-left: 8px;
@@ -474,321 +474,10 @@ code {
   vertical-align: middle;
 }
 
-/* ===== Background Music Button ===== */
-.bgm-toggle {
-  position: fixed;
-  left: 18px;
-  bottom: 18px;
-  z-index: 1200;
-
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: none;
-
-  background: rgba(2, 6, 23, 0.8);
-  color: #e5e7eb;
-  font-weight: 700;
-  cursor: pointer;
-
-  box-shadow: 0 10px 24px rgba(0,0,0,0.5);
-}
-
-.bgm-toggle:hover {
-  filter: brightness(1.1);
-}
-
-/* =========================================================
-   Background Music Control (NO OVERLAP – FINAL)
-========================================================= */
-
-.bgm-control {
-  position: fixed;
-  left: 18px;
-  bottom: 18px;
-  z-index: 1200;
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 8px 10px;
-  background: rgba(2, 6, 23, 0.55);
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-}
-
-/* 播放 / 暫停按鈕 */
-.bgm-toggle {
-  position: static;            /* 🔑 關鍵：避免疊加 */
-  border: none;
-  padding: 8px 14px;
-  border-radius: 999px;
-
-  background: rgba(2, 6, 23, 0.85);
-  color: #e5e7eb;
-  font-weight: 700;
-  cursor: pointer;
-
-  white-space: nowrap;
-}
-
-/* 音量滑桿 */
-.bgm-volume {
-  position: static;            /* 🔑 關鍵 */
-  width: 90px;
-  height: 4px;
-
-  cursor: pointer;
-  accent-color: #22d3ee;
-}
-
-/* 手機：只留按鈕，不重疊 */
-@media (max-width: 640px) {
-  .bgm-control {
-    padding: 6px;
-  }
-
-  .bgm-volume {
-    display: none;
-  }
-}
-
-/* =========================================================
-   Minecraft Style BGM UI (FINAL)
-========================================================= */
-
-.mc-bgm {
-  position: fixed;
-  left: 18px;
-  bottom: 18px;
-  z-index: 1200;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 8px 10px;
-  background: #1f2937; /* Minecraft UI dark */
-  border: 3px solid #111827;
-  box-shadow:
-    inset 0 0 0 2px #374151,
-    0 8px 18px rgba(0,0,0,0.6);
-
-  image-rendering: pixelated;
-}
-
-/* 播放按鈕 */
-.mc-bgm-btn {
-  font-family: "Minecraft", "Microsoft JhengHei", sans-serif;
-  font-size: 14px;
-
-  padding: 6px 12px;
-  background: #374151;
-  color: #e5e7eb;
-
-  border: 2px solid #111827;
-  box-shadow: inset 0 0 0 2px #4b5563;
-
-  cursor: pointer;
-  user-select: none;
-}
-
-.mc-bgm-btn:hover {
-  background: #4b5563;
-}
-
-.mc-bgm-btn:active {
-  transform: translateY(1px);
-}
-
-/* 音量區塊 */
-.mc-bgm-volume-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.mc-bgm-icon {
-  font-size: 14px;
-  line-height: 1;
-}
-
-/* Minecraft 經驗條風格音量 */
-.mc-bgm-volume {
-  -webkit-appearance: none;
-  appearance: none;
-
-  width: 90px;
-  height: 10px;
-  background: #052e16;
-  border: 2px solid #064e3b;
-  box-shadow: inset 0 0 0 2px #022c22;
-
-  cursor: pointer;
-}
-
-.mc-bgm-volume::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 10px;
-  height: 14px;
-  background: #22c55e;
-  border: 2px solid #14532d;
-  box-shadow: inset 0 0 0 2px #16a34a;
-}
-
-.mc-bgm-volume::-moz-range-thumb {
-  width: 10px;
-  height: 14px;
-  background: #22c55e;
-  border: 2px solid #14532d;
-}
-
-/* 手機：只留按鈕 */
-@media (max-width: 640px) {
-  .mc-bgm-volume-wrap {
-    display: none;
-  }
-}
-
-/* =========================================================
-   Minecraft Disc – Now Playing UI
-========================================================= */
-
-.mc-bgm {
-  position: fixed;
-  left: 18px;
-  bottom: 18px;
-  z-index: 1200;
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 10px;
-  background: #1f2937;
-  border: 3px solid #111827;
-  box-shadow:
-    inset 0 0 0 2px #374151,
-    0 8px 18px rgba(0,0,0,0.6);
-
-  image-rendering: pixelated;
-}
-
-/* ================= 唱片 ================= */
-
-.mc-disc {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-
-  background:
-    radial-gradient(circle at center,
-      #000 0%,
-      #000 25%,
-      #111 26%,
-      #111 45%,
-      #000 46%,
-      #000 100%);
-
-  border: 3px solid #020617;
-  position: relative;
-
-  animation: mc-spin 3s linear infinite;
-  animation-play-state: paused;
-}
-
-.mc-disc-center {
-  position: absolute;
-  inset: 18px;
-  background: #22c55e;
-  border-radius: 50%;
-  border: 2px solid #14532d;
-}
-
-/* 播放中旋轉 */
-.mc-disc.is-playing {
-  animation-play-state: running;
-}
-
-@keyframes mc-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ================= 控制 ================= */
-
-.mc-bgm-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.mc-bgm-btn {
-  font-family: "Microsoft JhengHei", sans-serif;
-  font-size: 14px;
-
-  padding: 6px 12px;
-  background: #374151;
-  color: #e5e7eb;
-
-  border: 2px solid #111827;
-  box-shadow: inset 0 0 0 2px #4b5563;
-  cursor: pointer;
-}
-
-.mc-bgm-btn:hover {
-  background: #4b5563;
-}
-
-/* ================= 音量 ================= */
-
-.mc-bgm-volume-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.mc-bgm-volume {
-  -webkit-appearance: none;
-  appearance: none;
-
-  width: 90px;
-  height: 10px;
-  background: #052e16;
-  border: 2px solid #064e3b;
-  box-shadow: inset 0 0 0 2px #022c22;
-}
-
-.mc-bgm-volume::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 10px;
-  height: 14px;
-  background: #22c55e;
-  border: 2px solid #14532d;
-}
-
-/* ================= 曲名 ================= */
-
-.mc-bgm-track {
-  font-size: 12px;
-  color: #a7f3d0;
-  white-space: nowrap;
-  max-width: 220px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* 手機：隱藏唱片與曲名 */
-@media (max-width: 640px) {
-  .mc-disc,
-  .mc-bgm-track {
-    display: none;
-  }
-}
-
-/* =========================================================
+/* =========================
    Minecraft Style BGM UI (NO TITLE – FINAL)
-========================================================= */
-
+   (Use this UI only; removed other BGM variants to avoid overrides)
+========================= */
 .mc-bgm {
   position: fixed;
   left: 18px;
@@ -802,9 +491,7 @@ code {
   padding: 8px 10px;
   background: #1f2937;
   border: 3px solid #111827;
-  box-shadow:
-    inset 0 0 0 2px #374151,
-    0 8px 18px rgba(0,0,0,0.6);
+  box-shadow: inset 0 0 0 2px #374151, 0 8px 18px rgba(0, 0, 0, 0.6);
 
   image-rendering: pixelated;
 }
@@ -880,5 +567,3 @@ code {
     display: none;
   }
 }
-
-
